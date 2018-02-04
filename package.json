@@ -1,0 +1,24 @@
+{
+  "name": "friend-finder",
+  "version": "1.0.0",
+  "description": "App for finding matching friends",
+  "main": "app/public/home.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kylec-94/friend-finder.git"
+  },
+  "author": "Kyle Crane",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kylec-94/friend-finder/issues"
+  },
+  "homepage": "https://github.com/kylec-94/friend-finder#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "path": "^0.12.7"
+  }
+}

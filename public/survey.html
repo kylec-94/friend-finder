@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Survey</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  	
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron centering text-center">
+			<h1>Friend Finder</h1>
+			<hr>
+			<h3>Fill out our survey to find your friend matches! Please use the scale 1-5 (5 being the greatest) for any applicable answers to questions.</h3>
+			<br>
+			<a href="/view"><button type="button" class="btn btn-primary btn-lg"><span class="glyphicon glyphicon-align-justify"></span> View Matches</button></a>
+			<a href="/"><button type="button" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-home"></span> Home</button></a>
+		</div>
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3 class="panel-title"><strong>Questionairre</strong></h3>
+					</div>
+					<div class="panel-body">
+						<form>
+							<div class="form-group">
+								<h3 class="name">Name</h3>
+								<input type="text" id="name" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="phone">Link to Picture</h3>
+								<input type="text" id="pic-link" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="email">How much do you like wine?</h3>
+								<input type="number" id="wine-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you like beer?</h3>
+								<input type="number" id="beer-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you like Ohio State?</h3>
+								<input type="number" id="osu-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you like baseball?</h3>
+								<input type="number" id="baseball-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you think Saturdays are for the boys?</h3>
+								<input type="number" id="saftb-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you like JavaScript?</h3>
+								<input type="number" id="js-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you like Game of Thrones?</h3>
+								<input type="number" id="thrones-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you like the beach?</h3>
+								<input type="number" id="beach-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you like Cleveland?</h3>
+								<input type="number" id="cle-answer" class="form-control">
+							</div>
+							<div class="form-group">
+								<h3 class="unique">How much do you like coffee?</h3>
+								<input type="number" id="coffee-answer" class="form-control">
+							</div>
+							<button type="submit" class="btn btn-primary btn-md" id="submit-btn">Submit</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+
+	
+
+
+		$("#submit-btn").on("click", function(event){
+			event.preventDefault();
+			
+			var newUserData = {
+				name: $("#name").val().trim(),
+				pictureLink: $("#pic-link").val().trim(),
+				scores: [
+				$("#wine-answer").val().trim(),
+				$("#beer-answer").val().trim(),
+				$("#osu-answer").val().trim(),
+				$("#baseball-answer").val().trim(),
+				$("#saftb-answer").val().trim(),
+				$("#js-answer").val().trim(),
+				$("#thrones-answer").val().trim(),
+				$("#beach-answer").val().trim(),
+				$("#cle-answer").val().trim(),
+				$("#coffee-answer").val().trim()]
+			};
+			$.post("/api/users", newUserData)
+			.done(function(data){
+				console.log(data);
+				alert("Adding survey answers...");
+			});	
+		});
+		
+	</script>
+
+	<footer class="footer">
+		<div class="container">
+			<a href="/api/tables">API Friends Link</a>
+			|
+			<a href="/api/waitlist">API Wait List</a>
+		</div>
+	</footer>
+</body>
+</html>
